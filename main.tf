@@ -12,6 +12,17 @@ provider "tfe" {
   #token    = setup an environment variable
 }
 
+terraform {
+  cloud {
+    organization = "daniela-org"
+    hostname = "app.terraform.io" # Optional; defaults to app.terraform.io
+
+    workspaces {
+      name = "tfe-provider-prevent-destroy"
+    }
+  }
+}
+
 
 resource "tfe_workspace" "test" {
   name         = "my-workspace-name"
